@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:shop/minor_screen/search.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,10 +19,34 @@ class _HomeScreenState extends State<HomeScreen> {
     child: Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.amber,
-        title: CupertinoSearchTextField(),
+        backgroundColor: Colors.white,
+        title: InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen()));
+          },
+          child: Container(
+          height: 35,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.amber, width: 1.4),
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+            Icon(Icons.search, color: Colors.grey,),
+            Text("What's are you looking for?", style: TextStyle(fontSize: 16, color: Colors.grey),),
+            Container(
+              decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(25), border: Border.all(color: Colors.amber, width: 1.4),), 
+              height: 32,
+              width: 75,
+              child: Center(child: Text("Search", style: TextStyle(fontSize: 16, color: Colors.grey))),
+              )
+          ],),
+        ),
+        ),
+            
         bottom: TabBar(
-          indicatorColor: Colors.white,
+          indicatorColor: Colors.amber,
           indicatorWeight: 5,
           isScrollable: true,
           tabs: [
