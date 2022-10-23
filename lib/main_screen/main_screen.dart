@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:shop/main_screen/home.dart';
 
 class CustomerHomeScreen extends StatefulWidget {
   const CustomerHomeScreen({super.key});
@@ -11,10 +12,19 @@ class CustomerHomeScreen extends StatefulWidget {
 
 class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
   int _selectedIndex = 0;
+  final List<Widget> _tabs = [
+    HomeScreen(),
+    Center(child: Text("home screen"),),
+    Center(child: Text("category screen"),),
+    Center(child: Text("stories screen"),),
+    Center(child: Text("cart screen"),),
+    Center(child: Text("profile screen"),),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: _tabs[_selectedIndex],
     bottomNavigationBar: BottomNavigationBar(
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.red,
